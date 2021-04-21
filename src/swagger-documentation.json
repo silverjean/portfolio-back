@@ -1,0 +1,283 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Books e-commerce",
+    "version": "1.0.0",
+    "title": "API E-commerce Documentation"
+  },
+  "host": "localhost:3333",
+  "basePath": "/",
+  "tags": [],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/user": {
+      "post": {
+        "tags": ["Users"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "obj",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/obj"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/auth": {
+      "post": {
+        "tags": ["Auth"],
+        "description": "",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "obj",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/obj_1"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/comment": {
+      "post": {
+        "tags": ["Comment"],
+        "description": "",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "obj",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/obj_1"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "index": {
+        "tags": ["Comment"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Comment"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/contact": {
+      "post": {
+        "tags": ["Contact"],
+        "description": "",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "obj",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/obj_1"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "index": {
+        "tags": ["Contact"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Contact"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Bearer": {
+      "description": "JWT Token",
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "user": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "ID"
+        },
+        "user": {
+          "type": "string",
+          "example": "Nome"
+        },
+        "password": {
+          "type": "string",
+          "example": "Nome"
+        }
+      }
+    },
+    "auth": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "type": "string",
+          "example": "user"
+        },
+        "password": {
+          "type": "string",
+          "example": "1234"
+        }
+      }
+    },
+    "comment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "ID"
+        },
+        "name": {
+          "type": "string",
+          "example": "Nome"
+        },
+        "content": {
+          "type": "string",
+          "example": "olá, blablabla"
+        }
+      }
+    },
+    "contact": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "ID"
+        },
+        "name": {
+          "type": "string",
+          "example": "Nome"
+        },
+        "phone_number": {
+          "type": "string",
+          "example": "Nome"
+        },
+        "email": {
+          "type": "string",
+          "example": "Nome"
+        },
+        "message": {
+          "type": "string",
+          "example": "olá, blablabla"
+        }
+      }
+    }
+  }
+}
