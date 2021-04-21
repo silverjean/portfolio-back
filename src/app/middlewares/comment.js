@@ -1,17 +1,16 @@
 /* eslint-disable radix */
+import { Op } from 'sequelize';
 import Comment from '../models/Comment';
 
 function getPaginate(request, response, next) {
-  const { name, content } = request.query;
+  const { name } = request.query;
 
   const where = {};
 
   if (name) {
-    where.name = name;
-  }
-
-  if (content) {
-    where.content = content;
+    where.name = {
+      [Op.like]: `%${name}%`,
+    };
   }
 
   request.where = where;

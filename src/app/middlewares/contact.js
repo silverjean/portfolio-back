@@ -1,25 +1,16 @@
 /* eslint-disable radix */
+import { Op } from 'sequelize';
 import Contact from '../models/Contact';
 
 function getPaginate(request, response, next) {
-  const { name, email, phoneNumber, message } = request.query;
+  const { name } = request.query;
 
   const where = {};
 
   if (name) {
-    where.name = name;
-  }
-
-  if (email) {
-    where.email = email;
-  }
-
-  if (phoneNumber) {
-    where.phoneNumber = phoneNumber;
-  }
-
-  if (message) {
-    where.message = message;
+    where.name = {
+      [Op.like]: `%${name}%`,
+    };
   }
 
   request.where = where;
